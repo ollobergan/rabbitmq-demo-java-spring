@@ -19,9 +19,9 @@ public class RabbitMqService {
      * @param messageType
      */
     public void pushRawMessage(Object object, String messageType){
-        final var rawMessageDto = new RawMessageDto();
+        RawMessageDto rawMessageDto = new RawMessageDto();
         rawMessageDto.setMessageType(messageType);
         rawMessageDto.setObject(object);
-        rabbitTemplate.convertAndSend("demo_exchange","demo_routingkey",object);
+        rabbitTemplate.convertAndSend("demo_exchange","demo_routingkey",rawMessageDto);
     }
 }

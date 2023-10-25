@@ -1,11 +1,9 @@
 package uz.ollobergan.rabbitmq.dto;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 public class RawMessageDto<T> {
 
     private String messageType;
