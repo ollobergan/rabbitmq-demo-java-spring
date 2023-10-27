@@ -24,4 +24,13 @@ public class RabbitMqService {
         rawMessageDto.setObject(object);
         rabbitTemplate.convertAndSend("demo_exchange","demo_routingkey",rawMessageDto);
     }
+
+    /**
+     * Send message own typical queue
+     *
+     * @param object
+     */
+    public void pushMessageToOwnQueue(RawMessageDto object, String routing_key){
+        rabbitTemplate.convertAndSend("demo_exchange","demo_routingkey1",object.getObject());
+    }
 }

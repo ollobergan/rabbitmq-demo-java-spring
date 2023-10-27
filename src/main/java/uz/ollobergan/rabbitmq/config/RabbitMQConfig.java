@@ -1,8 +1,7 @@
 package uz.ollobergan.rabbitmq.config;
 
 
-import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -12,10 +11,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
+
+    static final String queueName = "demo_queue";
+
     @Bean
     public Queue createUserRegistrationQueue() {
-        return new Queue("demo_queue");
+        return new Queue(queueName);
     }
+
 
     @Bean
     public MessageConverter converter(){
@@ -28,4 +31,6 @@ public class RabbitMQConfig {
         rabbitTemplate.setMessageConverter(converter());
         return rabbitTemplate;
     }
+
+
 }
